@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AgregarPageRoutingModule } from './agregar-routing.module';
+import { ListaCitasPageRoutingModule } from './lista-citas-routing.module';
 
-import { AgregarPage } from './agregar.page';
+import { ListaCitasPage } from './lista-citas.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AgregarPageRoutingModule
+    ListaCitasPageRoutingModule
   ],
-  declarations: [AgregarPage]
+  declarations: [ListaCitasPage]
 })
-export class AgregarPageModule {}
+export class ListaCitasPageModule {}

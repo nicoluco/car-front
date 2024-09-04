@@ -8,17 +8,32 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'agregar',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {
-    path: 'listar',
-    loadChildren: () => import('./pages/listar/listar.module').then( m => m.ListarPageModule)
+    path: 'inicio-sesion',
+    loadChildren: () => import('./pages/inicio-sesion/inicio-sesion.module').then( m => m.InicioSesionPageModule)
   },
   {
-    path: 'agregar',
-    loadChildren: () => import('./pages/agregar/agregar.module').then( m => m.AgregarPageModule)
+    path: 'perfil',
+    loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
   },
+  {
+    path: 'registro-vehiculo',
+    loadChildren: () => import('./pages/registro-vehiculo/registro-vehiculo.module').then( m => m.RegistroVehiculoPageModule)
+  },
+  {
+    path: 'lista-citas',
+    loadChildren: () => import('./pages/lista-citas/lista-citas.module').then( m => m.ListaCitasPageModule)
+  },  {
+    path: 'registro-mantencion',
+    loadChildren: () => import('./pages/registro-mantencion/registro-mantencion.module').then( m => m.RegistroMantencionPageModule)
+  },
+
+ 
+
+
 ];
 
 @NgModule({
