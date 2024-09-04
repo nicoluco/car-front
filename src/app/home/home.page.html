@@ -1,20 +1,62 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
+  <br><br><br><br>
+
+ 
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="margenTop">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Blank</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+
+  <ion-card>
+  <ion-card-header>
+    <ion-card-title>Registro de usuario</ion-card-title>
+    <ion-card-subtitle>Ingrese sus datos</ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content>
+    
+    <ion-list>
+      <ion-list>
+        <ion-item>
+          <ion-input label="Nombre" placeholder="Ingrese Nombre"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label="Apellido" placeholder="Ingrese Apellido"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label="Email " type="email" placeholder="email@domain.com"></ion-input>
+        </ion-item>
+    
+        <ion-item>
+          <ion-input label="Contraseña" type="password" value="password"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label="Confirmar Contraseña" type="password" value="password"></ion-input>
+        </ion-item>
+    
+        
+      </ion-list>
+    </ion-list>
+    <br>
+    <div class="centrarBtn">
+    <ion-button>Registrar</ion-button>
+    </div>
+
+    
+  </ion-card-content>
+</ion-card>
+
+
+
+
+
 </ion-content>
+

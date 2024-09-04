@@ -7,6 +7,32 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  nombre: string = "Nicole"
+  edad: number = 0;
+
+  eliminar!: string;
+
+  listas: any = [
+    {
+      edad: 4,
+      apellido: "Luco"
+
+    }
+  ];
+  apellido: any;
+  
+  constructor() { }
+  
+
+  sumar() {
+    this.apellido;
+    console.log("Hola mundo");
+  }
+
+  restar(numero:number) {
+    
+  }
+
+
 
 }
