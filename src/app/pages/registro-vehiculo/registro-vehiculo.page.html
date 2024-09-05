@@ -1,13 +1,55 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>registroVehiculo</ion-title>
+    <ion-title></ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">registroVehiculo</ion-title>
+      <ion-title size="large"></ion-title>
     </ion-toolbar>
   </ion-header>
+
+ <ion-card class="top">
+  <ion-card-header>
+    <ion-card-title>Registro de Vehículo</ion-card-title>
+    <ion-card-subtitle>Ingrese sus datos</ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content>
+    
+    <ion-list>
+      <ion-list>
+        <ion-item>
+          <ion-input label="Modelo" placeholder="Nombre del modelo"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label="Marca" placeholder="Marca"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label="Patente" placeholder="Patente"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label="Kilometraje" placeholder="Ingrese kilometraje"></ion-input>
+        </ion-item>
+
+        
+      </ion-list>
+    </ion-list>
+    <br>
+    <div class="centrarBtn">
+    <ion-button>Registrar</ion-button>
+    </div>
+
+    
+  </ion-card-content>
+</ion-card>
+
+
+
+
 </ion-content>
