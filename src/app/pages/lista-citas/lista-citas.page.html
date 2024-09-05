@@ -13,11 +13,32 @@
 
 
   <ion-content color="light">
-  <ion-list [inset]="true">
+    <ion-grid><ion-row class="ion-justify-content-center"><ion-col  size-md="6">
+    <ion-list [inset]="true">
+        <ion-item>
+          <ion-label>
+            <ion-label>
+              <strong>Revisión de frenos</strong>
+              <br />
+              <ion-note color="medium" class="ion-text-wrap">
+                28/08/2024
+              </ion-note>
+            </ion-label>    
+            <!-- Botón "+" alineado a la derecha -->
+            <ion-fab vertical="center" horizontal="end" slot="end" class="buton">
+              <ion-fab-button size="small">
+                <ion-icon name="checkmark"></ion-icon>
+              </ion-fab-button>
+              <ion-fab-button size="small">
+                <ion-icon name="close"></ion-icon>
+              </ion-fab-button>
+            </ion-fab> 
+          </ion-label>
+        </ion-item>
       <ion-item>
         <ion-label>
           <ion-label>
-            <strong>Revisión de frenos</strong>
+            <strong>Revisión de motor</strong>
             <br />
             <ion-note color="medium" class="ion-text-wrap">
               28/08/2024
@@ -34,67 +55,48 @@
           </ion-fab> 
         </ion-label>
       </ion-item>
-    <ion-item>
-      <ion-label>
+      <ion-item>
         <ion-label>
-          <strong>Revisión de motor</strong>
-          <br />
-          <ion-note color="medium" class="ion-text-wrap">
-            28/08/2024
-          </ion-note>
-        </ion-label>    
-        <!-- Botón "+" alineado a la derecha -->
-        <ion-fab vertical="center" horizontal="end" slot="end" class="buton">
-          <ion-fab-button size="small">
-            <ion-icon name="checkmark"></ion-icon>
-          </ion-fab-button>
-          <ion-fab-button size="small">
-            <ion-icon name="close"></ion-icon>
-          </ion-fab-button>
-        </ion-fab> 
-      </ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>
+          <ion-label>
+            <strong>Cambio de aceire</strong>
+            <br />
+            <ion-note color="medium" class="ion-text-wrap">
+              28/08/2024
+            </ion-note>
+          </ion-label>    
+          <!-- Botón "+" alineado a la derecha -->
+          <ion-fab vertical="center" horizontal="end" slot="end" class="buton">
+            <ion-fab-button size="small">
+              <ion-icon name="checkmark"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button size="small">
+              <ion-icon name="close"></ion-icon>
+            </ion-fab-button>
+          </ion-fab> 
+        </ion-label>
+      </ion-item>
+      <ion-item>
         <ion-label>
-          <strong>Cambio de aceire</strong>
-          <br />
-          <ion-note color="medium" class="ion-text-wrap">
-            28/08/2024
-          </ion-note>
-        </ion-label>    
-        <!-- Botón "+" alineado a la derecha -->
-        <ion-fab vertical="center" horizontal="end" slot="end" class="buton">
-          <ion-fab-button size="small">
-            <ion-icon name="checkmark"></ion-icon>
-          </ion-fab-button>
-          <ion-fab-button size="small">
-            <ion-icon name="close"></ion-icon>
-          </ion-fab-button>
-        </ion-fab> 
-      </ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>
-        <ion-label>
-          <strong>Revisión de frenos</strong>
-          <br />
-          <ion-note color="medium" class="ion-text-wrap">
-            25/08/2024
-          </ion-note>
-        </ion-label>    
-        <!-- Botón "+" alineado a la derecha -->
-        <ion-fab vertical="center" horizontal="end" slot="end" class="buton">
-          <ion-fab-button size="small">
-            <ion-icon name="checkmark"></ion-icon>
-          </ion-fab-button>
-          <ion-fab-button size="small">
-            <ion-icon name="close"></ion-icon>
-          </ion-fab-button>
-        </ion-fab> 
-      </ion-label>
-    </ion-item>
-  </ion-list>
+          <ion-label>
+            <strong>Revisión de frenos</strong>
+            <br />
+            <ion-note color="medium" class="ion-text-wrap">
+              25/08/2024
+            </ion-note>
+          </ion-label>    
+          <!-- Botón "+" alineado a la derecha -->
+          <ion-fab vertical="center" horizontal="end" slot="end" class="buton">
+            <ion-fab-button size="small">
+              <ion-icon name="checkmark"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button size="small">
+              <ion-icon name="close"></ion-icon>
+            </ion-fab-button>
+          </ion-fab> 
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-col></ion-row></ion-grid>
 </ion-content>
 
 
