@@ -4,10 +4,59 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="ion-padding">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">registroMantencion</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-card>
+    <ion-card-content>
+      <ion-card-header class="text-align-center">
+        <ion-card-title > <h1>Registrar mantención</h1></ion-card-title>
+      </ion-card-header>
+      <form (ngSubmit)="onSubmit()">
+        <!-- lista de mantenciones-->
+        <ion-item>
+          <ion-label>Tipo de Mantención (*)</ion-label>
+          <ion-select [(ngModel)]="tipoMantencion" name="tipoMantencion" interface="popover" placeholder="Selecciona una opción">
+            <ion-select-option value="cambio-aceite">Cambio de Aceite</ion-select-option>
+            <ion-select-option value="revision-frenos">Revisión de Frenos</ion-select-option>
+            <ion-select-option value="alineacion">Alineación</ion-select-option>
+            <ion-select-option value="reparacion-motor">Reparación de Motor</ion-select-option>
+          </ion-select>
+        </ion-item>
+    
+        
+        <ion-item>
+          <ion-label>Fecha de Mantención (*)</ion-label>
+          <ion-datetime-button datetime="datetimeMantencion"></ion-datetime-button>
+          <ion-modal keepContentsMounted="true">
+            <ng-template>
+              <ion-datetime
+                id="datetimeMantencion"
+                [(ngModel)]="fechaMantencion"
+                name="fechaMantencion"
+                presentation="date"
+                cancelText="Cancelar"
+                doneText="Hecho">
+              </ion-datetime>
+            </ng-template>
+          </ion-modal>
+        </ion-item>
+        <ion-item>
+          <ion-textarea [(ngModel)]="comentarios" name="comentarios" label="Comentarios adicionales" labelPlacement="floating" rows="5"></ion-textarea>
+        </ion-item>
+    
+        
+        <ion-item>
+          <ion-label>Agregar evidencia</ion-label>
+          <input type="file" (change)="onFileSelected($event)" accept="image/*">
+        </ion-item>
+    
+        
+        <ion-button expand="block" type="submit">Registrar Mantención</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
