@@ -5,9 +5,125 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+
+
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Perfil</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-card>
+  
+    <ion-card-header>
+      <div class="fotoPerfil">
+        <!-- Contenido de Perfil y Nombre -->
+        <div>
+          <ion-card-title>Perfil</ion-card-title>
+          <ion-card-subtitle>nombre</ion-card-subtitle>
+        </div>
+    
+        <!-- Avatar alineado a la derecha -->
+        <ion-avatar>
+          <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+        </ion-avatar>
+      </div>
+    </ion-card-header>
+
+    <!-- datos e informacion del perfil -->
+
+
+    <ion-list [inset]="true">
+      <ion-item [button]="true" detail="false" >
+        <!-- Indicador de notificación -->
+        <div class="unread-indicator-wrapper" slot="start">
+          <div class="unread-indicator"></div>
+        </div>
+    
+        <!-- Texto de Nuevo Vehículo -->
+      
+        <ion-label>
+          <strong>Nuevo vehículo</strong>
+          <br />
+          <ion-note color="medium" class="ion-text-wrap">
+            Registra tu vehículo
+          </ion-note>
+        </ion-label>    
+        <!-- Botón "+" alineado a la derecha -->
+        <ion-fab vertical="center" horizontal="end" slot="end" class="plusButon">
+          <ion-fab-button size="small">
+            <ion-icon name="add"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>
+
+
+        <ion-label>
+          <strong>Nuevo vehículo</strong>
+          <br />
+          <ion-note color="medium" class="ion-text-wrap">
+            Registra tu vehículo
+          </ion-note>
+        </ion-label>
+
+        
+      </ion-item>
+
+    </ion-list>
+    
+
+
+<!-- inicio de la seccion de datos del perfil -->
+
+
+<!-- comentario -->
+    <!-- inicio de la seccion historial -->
+     <div>
+      <ion-card-title class="titulo" >Historial del vehiculo</ion-card-title>
+    </div>
+    <ion-list [inset]="true">
+      <ion-item [button]="true" detail="false">
+        <div class="unread-indicator-wrapper" slot="start">
+          <div class="unread-indicator"></div>
+        </div>
+        <ion-label>
+          <strong>dato 1 </strong>
+          <ion-text>ejemplo</ion-text><br />
+          <ion-note color="medium" class="ion-text-wrap">
+            este es un ejemplo de entrada de historial
+          </ion-note>
+        </ion-label>
+        <div class="metadata-end-wrapper" slot="end">
+          <ion-note color="medium">06:11</ion-note>
+          <ion-icon color="medium" name="chevron-forward"></ion-icon>
+        </div>
+      </ion-item>
+      <ion-item [button]="true" detail="false">
+        <div class="unread-indicator-wrapper" slot="start"></div>
+        <ion-label>
+          <strong>revision </strong>
+          <ion-text>ajuste de frenos</ion-text><br />
+          <ion-note color="medium" class="ion-text-wrap">se cambiaron las pastillas de freno</ion-note>
+        </ion-label>
+        <div class="metadata-end-wrapper" slot="end">
+          <ion-note color="medium">03:44</ion-note>
+          <ion-icon color="medium" name="chevron-forward"></ion-icon>
+        </div>
+      </ion-item>
+      <ion-item [button]="true" detail="false">
+        <div class="unread-indicator-wrapper" slot="start">
+          <div class="unread-indicator"></div>
+        </div>
+        <ion-label>
+          <strong>Steam</strong>
+          <ion-text>Game Store Sale</ion-text><br />
+          <ion-note color="medium" class="ion-text-wrap">
+            That game you added to your wish list 2 years ago is now on sale!
+          </ion-note>
+        </ion-label>
+        <div class="metadata-end-wrapper" slot="end">
+          <ion-note color="medium">Yesterday</ion-note>
+          <ion-icon color="medium" name="chevron-forward"></ion-icon>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-card>
 </ion-content>
