@@ -23,23 +23,27 @@
     <ion-list>
       <ion-list>
         <ion-item>
-          <ion-input label="Nombre" placeholder="Ingrese Nombre"></ion-input>
+          <ion-input [(ngModel)]="dato_nombre" label="Nombre" placeholder="Ingrese Nombre"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-input label="Apellido" placeholder="Ingrese Apellido"></ion-input>
+          <ion-input [(ngModel)]="dato_apellido" label="Apellido" placeholder="Ingrese Apellido"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-input label="Email " type="email" placeholder="email@domain.com"></ion-input>
+          <ion-input [(ngModel)]="dato_email" label="Email " type="email" placeholder="email@domain.com"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input [(ngModel)]="dato_telefono" label="telefono" type="text" value="password"></ion-input>
         </ion-item>
     
         <ion-item>
-          <ion-input label="Contraseña" type="password" value="password"></ion-input>
+          <ion-input [(ngModel)]="dato_password" label="Contraseña" type="password" value="password"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-input label="Confirmar Contraseña" type="password" value="password"></ion-input>
+          <ion-input [(ngModel)]="dato_password2" label="Confirmar Contraseña" type="password" value="password"></ion-input>
         </ion-item>
     
         
@@ -47,7 +51,7 @@
     </ion-list>
     <br>
     <div class="centrarBtn">
-    <ion-button>Registrar</ion-button>
+    <ion-button (click)="onClickPostData()">Registrar</ion-button>
     </div>
 
     

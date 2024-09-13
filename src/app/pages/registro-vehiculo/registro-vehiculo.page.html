@@ -22,14 +22,14 @@
     <ion-list>
       <ion-list>
         <ion-item>
-          <ion-input label="Modelo" placeholder="Nombre del modelo"></ion-input>
+          <ion-input [(ngModel)]="dato_modelo" label="Modelo" placeholder="Nombre del modelo"></ion-input>
         </ion-item>
 
         <!-- <ion-item>
           <ion-input label="Marca" placeholder="Marca"></ion-input>
         </ion-item> -->
 
-        <ion-item>
+        <!-- <ion-item>
           <ion-select label="Marca" placeholder="Seleccione una marca">
           <ion-select-option value="">Toyota</ion-select-option>
           <ion-select-option value="nes">Chevrolet</ion-select-option>
@@ -40,18 +40,29 @@
           <ion-select-option value="snes">Nissan </ion-select-option>
           <ion-select-option value="snes">Ford </ion-select-option>
           </ion-select>
+        </ion-item> -->
+
+        <ion-item>
+          <ion-label>Selecciona una opción</ion-label>
+          <ion-select [(ngModel)]="dato_marca">
+            <ion-select-option *ngFor="let item of datos_marcas" [value]="item.id">
+              {{ item.nombre }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+
+
+        <ion-item>
+          <ion-input [(ngModel)]="dato_annio"   label="Año" placeholder="ej. 2007"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-input label="Año" placeholder="ej. 2007"></ion-input>
+          <ion-input [(ngModel)]="dato_patente" label="Patente" placeholder="AABB25 ó DD1234"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-input label="Patente" placeholder="AABB25 ó DD1234"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-input label="Kilometraje" placeholder="Ingrese kilometraje actual"></ion-input>
+          <ion-input [(ngModel)]="dato_kilometraje" label="Kilometraje" placeholder="Ingrese kilometraje actual"></ion-input>
         </ion-item>
 
         
