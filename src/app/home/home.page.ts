@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { APIService } from '../api.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -14,20 +15,8 @@ export class HomePage {
   dato_password2: String;
   dato_telefono: String;
   
-  edad: number = 0;
-
-  eliminar!: string;
-
-  listas: any = [
-    {
-      edad: 4,
-      apellido: "Luco"
-
-    }
-  ];
-  apellido: any;
   
-  constructor(private apiService: APIService) {
+  constructor(private apiService: APIService, public toastController: ToastController) {
     this.dato_nombre= "";
     this.dato_apellido= "";
     this.dato_email= "";
@@ -60,8 +49,10 @@ export class HomePage {
     
     this.apiService.postData(tipo, data).subscribe(response => {
       console.log('Respuesta del POST:', response);
+      this.presentToast("Usuario creado correctamente");
     }, error => {
       console.error('Error en el POST:', error);
+      this.presentToast("Error, no se pudo crear el usuario");
     });
   }
 
@@ -69,7 +60,7 @@ export class HomePage {
   onClickGetData() {
 
     // aqui se asocia el "tipo" a la tabla que corresponde
-    const tipo="Usuarios"
+    const tipo="Usuarios/"
 
     this.apiService.getData(tipo).subscribe(response => {
       console.log('Datos recibidos:', response);
@@ -79,6 +70,19 @@ export class HomePage {
   }
 
   ngOnInit() {
+  }
+
+
+
+
+  async presentToast(message: string, duration?: number) {
+    const toast = await this.toastController.create(
+      {
+        message: message,
+        duration: duration ? duration : 2000
+      }
+    );
+    toast.present();
   }
 
 }
