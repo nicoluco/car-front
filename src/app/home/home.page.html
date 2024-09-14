@@ -55,10 +55,13 @@
     
         <ion-item>
           <ion-input [(ngModel)]="dato_password" label="Contraseña" type="password" value="password"
-          name="contrasena" #contrasena="ngModel" required
+          name="contrasena" #contrasena="ngModel" required minlength="6"
           ></ion-input>
         </ion-item>
-        <div *ngIf="contrasena.invalid && (contrasena.dirty || contrasena.touched)"> <p>Contraseña es requerido!</p> </div>
+        <div *ngIf="contrasena.invalid && (contrasena.dirty || contrasena.touched)"> 
+          <p *ngIf="contrasena.errors!['required']">Contraseña es requerido!</p> 
+          <p *ngIf="contrasena.errors!['minlength']">La contraseña debe tener al menos 6 dígitos</p>
+        </div>
 
         <ion-item>
           <ion-input [(ngModel)]="dato_password2" label="Confirmar Contraseña" type="password" value="password"
@@ -66,13 +69,17 @@
           ></ion-input>
         </ion-item>
         <div *ngIf="contrasena2.invalid && (contrasena2.dirty || contrasena2.touched)"> <p>Contraseña es requerido!</p> </div>
+
+        <div *ngIf="dato_password !== dato_password2 && contrasena2.touched">
+          <p>¡Las contraseñas no coinciden!</p>
+        </div>
     
         
       </ion-list>
     </ion-list>
     <br>
     <div class="centrarBtn">
-    <ion-button [disabled]="!registroForm.form.valid" (click)="onClickPostData()">Registrar</ion-button>
+    <ion-button [disabled]="!registroForm.form.valid || dato_password !== dato_password2" (click)="onClickPostData()">Registrar</ion-button>
     </div>
     </form>
     
