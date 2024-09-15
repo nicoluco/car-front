@@ -19,77 +19,73 @@
   </ion-card-header>
 
   <ion-card-content>
-    <form action="" #registroForm="ngForm">
+    <form [formGroup]="registroForm" action="" >
     <ion-list>
       <ion-list >
         <ion-item>
-          <ion-input [(ngModel)]="dato_nombre" label="Nombre" placeholder="Ingrese Nombre" 
-          name="name" #name="ngModel" required 
+          <ion-input label="Nombre" placeholder="Ingrese Nombre" 
+          name="name" formControlName="name"
           ></ion-input> 
         </ion-item>
-        <div *ngIf="name.invalid && (name.dirty || name.touched)"> <p>Nombre es requerido!</p> </div>
+        <div *ngIf="isValidField('name')"> 
+          <p>{{ getFieldError('name') }}</p>  
+        </div>
 
         <ion-item>
-          <ion-input [(ngModel)]="dato_apellido" label="Apellido" placeholder="Ingrese Apellido"
-          name="lastname" #lastname="ngModel" required
+          <ion-input label="Apellido" placeholder="Ingrese Apellido"
+          name="lastname" formControlName="lastname"
           ></ion-input>
         </ion-item>
-        <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)"> <p>Apellido es requerido!</p> </div>
+        <div *ngIf="isValidField('lastname')"> 
+          <p>{{ getFieldError('lastname') }}</p>  
+        </div>
 
         <ion-item>
-          <ion-input [(ngModel)]="dato_email" label="Email " type="email" placeholder="email@domain.com"
-          name="correo" #correo="ngModel" required
+          <ion-input label="Email " type="email" placeholder="email@domain.com"
+          name="correo" formControlName="correo" 
           ></ion-input>
         </ion-item>
-        <div *ngIf="correo.invalid && (correo.dirty || correo.touched)"> <p>Correo es requerido!</p> </div>
+        <div *ngIf="isValidField('correo')">
+           <p>{{ getFieldError('correo') }}</p> 
+        </div>
 
         <ion-item>
-          <ion-input [(ngModel)]="dato_telefono" label="Teléfono" type="text" value="password"
-          name="telefono" #telefono="ngModel" required minlength="8"
+          <ion-input label="Teléfono" type="text" 
+          name="telefono" formControlName="telefono"
           ></ion-input>
         </ion-item>
-        <div *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)"> 
-          <p *ngIf="telefono.errors!['required']" class="colormsn">Teléfono es requerido!</p> 
-          <p *ngIf="telefono.errors!['minlength']">El teléfono debe tener al menos 8 números</p>
+        <div *ngIf="isValidField('telefono')">
+           <p>{{ getFieldError('telefono') }}</p> 
         </div>
     
         <ion-item>
-          <ion-input [(ngModel)]="dato_password" label="Contraseña" type="password" value="password"
-          name="contrasena" #contrasena="ngModel" required minlength="6"
+          <ion-input label="Contraseña" type="password" 
+          name="contrasena" formControlName="contrasena"
           ></ion-input>
         </ion-item>
-        <div *ngIf="contrasena.invalid && (contrasena.dirty || contrasena.touched)"> 
-          <p *ngIf="contrasena.errors!['required']">Contraseña es requerido!</p> 
-          <p *ngIf="contrasena.errors!['minlength']">La contraseña debe tener al menos 6 dígitos</p>
+        <div *ngIf="isValidField('contrasena')"> 
+          <p>{{ getFieldError('contrasena') }}</p>  
         </div>
 
         <ion-item>
-          <ion-input [(ngModel)]="dato_password2" label="Confirmar Contraseña" type="password" value="password"
-          name="contrasena2" #contrasena2="ngModel" required
+          <ion-input label="Confirmar Contraseña" type="password" 
+          name="contrasena2" formControlName="contrasena2"
           ></ion-input>
         </ion-item>
-        <div *ngIf="contrasena2.invalid && (contrasena2.dirty || contrasena2.touched)"> <p>Contraseña es requerido!</p> </div>
-
-        <div *ngIf="dato_password !== dato_password2 && contrasena2.touched">
-          <p>¡Las contraseñas no coinciden!</p>
-        </div>
-    
+        <div *ngIf="isValidField('contrasena2')">
+           <p>{{ getFieldError('contrasena2') }}</p>  
+        </div>    
         
       </ion-list>
     </ion-list>
     <br>
     <div class="centrarBtn">
-    <ion-button [disabled]="!registroForm.form.valid || dato_password !== dato_password2" (click)="onClickPostData()">Registrar</ion-button>
+    <ion-button [disabled]="registroForm.invalid" (click)="onClickPostData()">Registrar</ion-button>
     </div>
     </form>
     
   </ion-card-content>
 </ion-card>
 </ion-col></ion-row></ion-grid>
-
-
-
-
-
 </ion-content>
 
