@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'inicio-sesion',
     pathMatch: 'full'
   },
   {
@@ -26,14 +26,19 @@ const routes: Routes = [
   {
     path: 'lista-citas',
     loadChildren: () => import('./pages/lista-citas/lista-citas.module').then( m => m.ListaCitasPageModule)
-  },  {
+  },
+  {
     path: 'registro-mantencion',
     loadChildren: () => import('./pages/registro-mantencion/registro-mantencion.module').then( m => m.RegistroMantencionPageModule)
+  },  {
+    path: 'registro-citas',
+    loadChildren: () => import('./pages/registro-citas/registro-citas.module').then( m => m.RegistroCitasPageModule)
   },
   {
     path: 'historial',
     loadChildren: () => import('./pages/historial/historial.module').then( m => m.HistorialPageModule)
   },
+
 
  
 
