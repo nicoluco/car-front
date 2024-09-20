@@ -30,7 +30,11 @@ const routes: Routes = [
   {
     path: 'registro-mantencion',
     loadChildren: () => import('./pages/registro-mantencion/registro-mantencion.module').then( m => m.RegistroMantencionPageModule)
+  },  {
+    path: 'registro-citas',
+    loadChildren: () => import('./pages/registro-citas/registro-citas.module').then( m => m.RegistroCitasPageModule)
   },
+
 
  
 
