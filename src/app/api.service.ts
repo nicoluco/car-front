@@ -7,7 +7,10 @@ import { Observable } from 'rxjs';
 })
 export class APIService {private apiUrl = 'http://localhost:8000/'; // URL de la API REST
 
-  constructor(private http: HttpClient) {}
+  private token :String;
+  constructor(private http: HttpClient) {
+    this.token= "";
+  }
 
   getData(tipo: String): Observable<any> {
     return this.http.get(this.apiUrl+tipo);
@@ -15,4 +18,11 @@ export class APIService {private apiUrl = 'http://localhost:8000/'; // URL de la
   postData(tipo: String, data: any): Observable<any> {
     return this.http.post(this.apiUrl+tipo, data);
   }
+  getToken(){
+    return this.token
+  }
+  setToken(value: String){
+    this.token=value
+  }
 }
+

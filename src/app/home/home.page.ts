@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { APIService } from '../api.service';
 import { ToastController } from '@ionic/angular';
 import { FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,7 @@ export class HomePage {
   dato_telefono: String;
 
 
-  constructor(private apiService: APIService, public toastController: ToastController, private fb: FormBuilder) {
+  constructor(private apiService: APIService, public toastController: ToastController, private fb: FormBuilder, private router: Router) {
     this.dato_nombre = "";
     this.dato_apellido = "";
     this.dato_email = "";
@@ -52,16 +53,18 @@ export class HomePage {
 
     // const data = { nombre: 'Felipe', mensaje: 'Hola desde Ionic' };
     const data = {
-      nombre: (this.dato_nombre + " " + this.dato_apellido).trim(), email: this.dato_email, password: this.dato_password, telefono: this.dato_telefono, fecha_registro: this.generarTimestamp()
+      username: (this.dato_nombre + "_" + this.dato_apellido).trim(), email: this.dato_email, password: this.dato_password, telefono: this.dato_telefono
+
     };
 
 
     // aqui se asocia el "tipo" a la tabla que corresponde
-    const tipo = "Usuarios/"
+    const tipo = "register/"
 
     this.apiService.postData(tipo, data).subscribe(response => {
       console.log('Respuesta del POST:', response);
       this.presentToast("Usuario creado correctamente"); //Mensaje para el usuario
+      this.router.navigate(["inicio-sesion/"])
     }, error => {
       console.error('Error en el POST:', error);
       this.presentToast("Error, no se pudo crear el usuario");//Mensaje para el usuario

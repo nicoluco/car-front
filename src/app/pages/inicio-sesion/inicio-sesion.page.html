@@ -43,7 +43,7 @@
      </ion-list>
      <br>
      <div class="centrarBtn">
-     <ion-button [disabled]="loginForm.invalid">Iniciar sesión</ion-button>
+     <ion-button [disabled]="loginForm.invalid" (click)="onClickPostData()">Iniciar sesión</ion-button>
      </div>
  
      <div class="espacioLink">
