@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,17 +13,41 @@ export class APIService {private apiUrl = 'http://localhost:8000/'; // URL de la
     this.token= "";
   }
 
-  getData(tipo: String): Observable<any> {
-    return this.http.get(this.apiUrl+tipo);
+  
+
+  getData(tipo: String,usaAuth: Boolean= false ): Observable<any> {
+    var headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    if (usaAuth ){
+
+      headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer '+this.getToken()
+      });
+    }
+    return this.http.get(this.apiUrl+tipo,{headers});
   }
-  postData(tipo: String, data: any): Observable<any> {
-    return this.http.post(this.apiUrl+tipo, data);
+  postData(tipo: String, data: any,usaAuth: Boolean= false): Observable<any> {
+    var headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    if (usaAuth ){
+
+      headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer '+this.getToken()
+      });
+    }
+    return this.http.post(this.apiUrl+tipo, data,{headers});
   }
+
   getToken(){
-    return this.token
+    return localStorage.getItem('token')
   }
-  setToken(value: String){
-    this.token=value
+  setToken(value: string){
+    localStorage.removeItem('token')
+    localStorage.setItem('token',value)
   }
 }
 

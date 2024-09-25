@@ -34,12 +34,12 @@ export class RegistroVehiculoPage implements OnInit {
     this.dato_kilometraje = this.registroVeForm.get('kmActual')?.value;
     this.dato_marca = this.registroVeForm.get('marca')?.value;
     
-    const data = { usuario:"http://localhost:8000/Usuarios/1/", marca:"http://localhost:8000/Marcas/"+this.dato_marca+"/", modelo:this.dato_modelo, anio: this.dato_annio, patente:this.dato_patente, kilometraje_actual:this.dato_kilometraje, fecha_registro:'2024-09-11T23:28:16Z'};
+    const data = {marca:"http://localhost:8000/Marcas/"+this.dato_marca+"/", modelo:this.dato_modelo, anio: this.dato_annio, patente:this.dato_patente, kilometraje_actual:this.dato_kilometraje, fecha_registro:'2024-09-11T23:28:16Z'};
    
     // aqui se asocia el "tipo" a la tabla que corresponde
     const tipo="Vehiculos/"
     
-    this.apiService.postData(tipo, data).subscribe(response => {
+    this.apiService.postData(tipo, data, true).subscribe(response => {
       console.log('Respuesta del POST:', response);
       this.presentToast("Vehículo creado correctamente"); //Mensaje para el usuario
     }, error => {
