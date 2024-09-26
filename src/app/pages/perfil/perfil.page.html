@@ -97,7 +97,7 @@
       <ion-card-title class="titulo" >Historial del vehiculo</ion-card-title>
     </div>
 
-    <ion-list [inset]="true">
+<!--     <ion-list [inset]="true">
       <ion-item [button]="true" detail="false">
         <div class="unread-indicator-wrapper" slot="start">
           <div class="unread-indicator"></div>
@@ -116,11 +116,34 @@
           <ion-note color="medium">06:11</ion-note>
           <ion-icon color="medium" name="chevron-forward"></ion-icon>
         </div>
-    
-      </ion-item>
-    
-
+      </ion-item> 
     </ion-list>
+ -->
+
+
+
+    
+    
+    <ion-list>
+      <ion-item *ngFor="let entrada of entradas_mantenimientos" [button]="true">
+        <ion-card >
+          <ion-card-header>
+            <ion-card-title>Mantenimiento: {{ entrada.mantenimiento.nombre}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            Descripción: {{ entrada.mantenimiento.descripcion}}
+          </ion-card-content>
+        </ion-card>
+      </ion-item>
+    </ion-list>
+
+
+
+
+
+
+
+
   </ion-card>
 </ion-col></ion-row></ion-grid>
 </ion-content>

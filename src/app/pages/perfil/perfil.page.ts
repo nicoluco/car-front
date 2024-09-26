@@ -52,7 +52,7 @@ export class PerfilPage implements OnInit {
     this.apiService.getData('Vehiculos/', true)
       .subscribe(response => {
         if (response[0]) {
-          this.noTieneAuto= false
+          this.noTieneAuto = false
           console.log(response)
           this.vehiculoData = response[0]["modelo"]
           console.log(response)
@@ -64,17 +64,17 @@ export class PerfilPage implements OnInit {
         console.error('Error en el GET:', error);
       });
 
-//inicio fragmenteo de prueba
-   const tipo = "HistorialMantenimientos/"
-    this.apiService.getData(tipo).subscribe(response => {
+    //inicio fragmenteo de prueba
+    const tipo = "HistorialMantenimientos/"
+    this.apiService.getData(tipo, true).subscribe(response => {
       console.log('mantenimientos recibidos:', response);
       this.entradas_mantenimientos = response
     }, error => {
       console.error('Error al hacer la petición:', error);
     });
 
- 
-//fin fragmenteo de prueba    
+
+    //fin fragmenteo de prueba    
   }
 
   navigateToRegistroVehiculo() {
