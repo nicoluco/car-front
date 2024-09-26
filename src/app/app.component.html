@@ -32,6 +32,9 @@
       <ion-toolbar>
         <ion-title>Menu</ion-title>
       </ion-toolbar>
+      <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-messaging.js"></script>
+
     </ion-header>
     <ion-content   class="ion-padding">
       <!-- <ion-item  [routerDirection]="'root'" [routerLink]="'/inicio-sesion'" (click)="menu.close()">
@@ -68,6 +71,39 @@
       <ion-label>Cerrar Sesión</ion-label>
     </ion-item>
 
+    <script>
+      // Tu configuración de Firebase
+      const firebaseConfig = {
+          apiKey: "AIzaSyAszd6Ddo-ui65jNTHugdBGFDXVAyj45wM",
+          authDomain: "portafolio-car.firebaseapp.com",
+          projectId: "portafolio-car",
+          storageBucket: "portafolio-car.appspot.com",
+          messagingSenderId: "910148873121",
+          appId: "1:910148873121:web:a525bdc95cb913f02a79e0",
+      };
+
+      // Inicializa Firebase
+      const app = firebase.initializeApp(firebaseConfig);
+      const messaging = firebase.messaging();
+
+      // Solicitar permiso para enviar notificaciones
+      messaging.requestPermission()
+        .then(() => messaging.getToken())
+        .then((token) => {
+            console.log('Token de FCM:', token);
+            this.handleFCMToken(token);  // Llamada a la función que envía el token
+        })
+        .catch((error) => {
+            console.error('Error al obtener el token:', error);
+        });
+
+      // Manejar la recepción de notificaciones en primer plano
+      messaging.onMessage((payload) => {
+          console.log('Mensaje recibido. ', payload);
+          // Mostrar la notificación aquí, si es necesario
+      });
+  </script>
+
 
     </ion-content>
 
@@ -83,4 +119,6 @@
   </ion-header>
   <ion-router-outlet></ion-router-outlet>
 </div>
+
+
 </ion-app>
