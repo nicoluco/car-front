@@ -65,7 +65,7 @@ export class PerfilPage implements OnInit {
       });
 
 //inicio fragmenteo de prueba
-    const tipo = "HistorialMantenimientos/"
+   const tipo = "HistorialMantenimientos/"
     this.apiService.getData(tipo).subscribe(response => {
       console.log('mantenimientos recibidos:', response);
       this.entradas_mantenimientos = response
@@ -73,7 +73,7 @@ export class PerfilPage implements OnInit {
       console.error('Error al hacer la petición:', error);
     });
 
-
+ 
 //fin fragmenteo de prueba    
   }
 
