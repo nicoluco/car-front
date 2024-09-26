@@ -13,7 +13,7 @@
 </ion-content> -->
 
 <ion-content color="light">
-  <ion-list [inset]="true">
+<!--   <ion-list [inset]="true">
 
   <ion-list-header>
     <ion-label>Historial de mantenciones</ion-label>
@@ -41,5 +41,26 @@
       </div>
     </ion-item>
    
+  </ion-list> -->
+  
+  
+  <ion-list [inset]="true">
+    <ion-item *ngFor="let entrada of entradas_mantenimientos">
+      <div class="mg-top">
+      <strong>{{ entrada.mantenimiento.nombre}}</strong>
+      <br />
+      <ion-note color="medium" class="ion-text-wrap">
+        {{entrada.fecha_mantenimiento}}
+      </ion-note>
+      <p>Info:{{ entrada.mantenimiento.descripcion}}</p>
+      </div>
+    </ion-item>
   </ion-list>
+
+
+
+
+
+
+
 </ion-content>
