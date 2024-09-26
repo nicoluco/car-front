@@ -15,6 +15,12 @@ export class PerfilPage implements OnInit {
   usernameDataCorreo: String;
   noTieneAuto: boolean;
 
+  entradas_mantenimientos: any[] = [];
+  entrada_mantenimiento: String;
+
+
+
+
   constructor(private router: Router,private apiService: APIService) {
     this.usernameData="";
     this.vehiculoData="Sin vehiculo";
@@ -22,6 +28,10 @@ export class PerfilPage implements OnInit {
     this.vehiculoKm= "Sin datos";
     this.usernameDataCorreo="Rgistre un mail";
     this.noTieneAuto= true;
+
+
+    this.entrada_mantenimiento= "";
+
    }
 
 // mostrar elementos a la hora de inicializar la pagina
@@ -54,8 +64,17 @@ export class PerfilPage implements OnInit {
         console.error('Error en el GET:', error);
       });
 
+//inicio fragmenteo de prueba
+    const tipo = "HistorialMantenimientos/"
+    this.apiService.getData(tipo).subscribe(response => {
+      console.log('mantenimientos recibidos:', response);
+      this.entradas_mantenimientos = response
+    }, error => {
+      console.error('Error al hacer la petición:', error);
+    });
 
-    
+
+//fin fragmenteo de prueba    
   }
 
   navigateToRegistroVehiculo() {

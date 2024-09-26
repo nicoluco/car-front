@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { APIService } from '../../api.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro-vehiculo',
@@ -17,7 +18,7 @@ export class RegistroVehiculoPage implements OnInit {
   datos_marcas: any[] = [];
   dato_marca: String;
 
-  constructor(private apiService: APIService, private fb: FormBuilder, public toastController: ToastController) { 
+  constructor(private apiService: APIService, private fb: FormBuilder, public toastController: ToastController, private router: Router) { 
     this.dato_annio= "";
     this.dato_modelo= "";
     this.dato_patente= "";
@@ -42,6 +43,7 @@ export class RegistroVehiculoPage implements OnInit {
     this.apiService.postData(tipo, data, true).subscribe(response => {
       console.log('Respuesta del POST:', response);
       this.presentToast("Vehículo creado correctamente"); //Mensaje para el usuario
+      this.router.navigate(["perfil/"])
     }, error => {
       console.error('Error en el POST:', error);
       this.presentToast("Error, no se pudo crear vehículo");//Mensaje para el usuario
