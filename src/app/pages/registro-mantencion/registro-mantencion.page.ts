@@ -27,7 +27,8 @@ export class RegistroMantencionPage implements OnInit {
 
   onSubmit() {
     if (this.tipoMantencion && this.fechaMantencion && this.evidencia) {
-
+      const formData: FormData= new FormData();
+      formData.append ('evidencia', this.evidencia, this.evidencia.name)
     } else {
       console.log('Es necesario completar los campos con *')
     }
