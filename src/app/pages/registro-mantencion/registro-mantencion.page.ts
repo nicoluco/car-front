@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { APIService } from '../../api.service';
 
 @Component({
   selector: 'app-registro-mantencion',
@@ -11,11 +12,25 @@ export class RegistroMantencionPage implements OnInit {
   comentarios!:string;
   evidencia!:File;
 
+  datos_mantenimientos: any[] = [];
+  dato_mantenimiento: String;
 
-  constructor() { }
+
+  constructor(private apiService: APIService) {
+    this.dato_mantenimiento= "";
+   }
 
   ngOnInit() {
+    const tipo="Mantenimientos/"
+    this.apiService.getData(tipo, true).subscribe(response => {
+      console.log('Datos recibidos:', response);
+      this.datos_mantenimientos= response
+    }, error => {
+      console.error('Error al hacer la petición:', error);
+    });
+
   }
+  
 
   onFileSelected(event:any) {
     const file: File = event.target.files[0];

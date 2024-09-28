@@ -18,15 +18,40 @@
       </ion-card-header>
       <form (ngSubmit)="onSubmit()">
         <!-- lista de mantenciones-->
-        <ion-item>
+ <!--        <ion-item>
           <ion-label>Tipo de Mantención (*)</ion-label>
-          <ion-select [(ngModel)]="tipoMantencion" name="tipoMantencion" interface="popover" placeholder="Selecciona una opción">
+           <ion-select [(ngModel)]="tipoMantencion" name="tipoMantencion" interface="popover" placeholder="Selecciona una opción">
             <ion-select-option value="cambio-aceite">Cambio de Aceite</ion-select-option>
             <ion-select-option value="revision-frenos">Revisión de Frenos</ion-select-option>
             <ion-select-option value="alineacion">Alineación</ion-select-option>
             <ion-select-option value="reparacion-motor">Reparación de Motor</ion-select-option>
           </ion-select>
+
+
+           <ion-select formControlName="mantenimiento"></ion-select>
+            <ion-select-option *ngFor="let item of datos_mantenimientos" [value]="item.id">
+              {{ item.nombre }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item> -->
+
+
+
+
+<!--   selector de vehiculo desde bd -->
+
+
+<!--         <ion-item>
+          <ion-label>Tipo de Mantención (*)</ion-label>
+          <ion-select formControlName="mantenimiento">
+            <ion-select-option *ngFor="let item of datos_mantenimientos" [value]="item.id">
+              {{ item.nombre }}
+            </ion-select-option>
+          </ion-select>
         </ion-item>
+ -->
+ -->
+
     
         
         <ion-item>
