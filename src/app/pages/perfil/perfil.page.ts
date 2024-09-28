@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { APIService } from '../../api.service';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-perfil',
@@ -21,7 +22,7 @@ export class PerfilPage implements OnInit {
 
 
 
-  constructor(private router: Router,private apiService: APIService) {
+  constructor(private router: Router, private apiService: APIService, private menuCtrl: MenuController) {
     this.usernameData="";
     this.vehiculoData="Sin vehiculo";
     this.vehiculoPatente="Sin datos";
@@ -74,7 +75,8 @@ export class PerfilPage implements OnInit {
     });
 
 
-    //fin fragmenteo de prueba    
+    //fin fragmenteo de prueba 
+    this.menuCtrl.enable(true)
   }
 
   navigateToRegistroVehiculo() {

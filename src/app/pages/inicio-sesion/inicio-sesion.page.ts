@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { APIService } from '../../api.service';
-import { ToastController } from '@ionic/angular';
+import { LoadingController, MenuController, ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,12 +13,13 @@ export class InicioSesionPage implements OnInit {
   dato_username: String;
   dato_password: String;
 
-  constructor(private fb: FormBuilder, private apiService: APIService, public toastController: ToastController, private router: Router) { 
+  constructor(private fb: FormBuilder, private apiService: APIService, public toastController: ToastController, private router: Router, private menuCtrl: MenuController, private loadingCtrl: LoadingController) { 
     this.dato_username= "";
     this.dato_password= "";
   }
 
   ngOnInit() {
+    this.menuCtrl.enable(false)
   }
 
   async presentToast(message: string, duration?: number) {
@@ -54,15 +55,16 @@ onClickPostData() {
 
     // aqui se asocia el "tipo" a la tabla que corresponde
     const tipo = "api/token/"
-
+    this.showLoading();
     this.apiService.postData(tipo, data).subscribe(response => {
       console.log('Respuesta del POST:', response);
-      this.presentToast("Usuario creado correctamente"); //Mensaje para el usuario
+      this.presentToast("Usuario a iniciado sesión correctamente"); //Mensaje para el usuario
       this.apiService.setToken(response["access"])
+      this.loadingCtrl.dismiss();
       this.router.navigate(["perfil/"])
     }, error => {
       console.error('Error en el POST:', error);
-      this.presentToast("Error, no se pudo crear el usuario");//Mensaje para el usuario
+      this.presentToast("Error, correo o contraseña invalida");//Mensaje para el usuario
     });
 
     //El formulario al enviarse queda en blanco
@@ -102,6 +104,17 @@ onClickPostData() {
     }
 
     return '';
+  }
+
+
+  async showLoading() {
+    const loading = await this.loadingCtrl.create({
+      spinner:"circular",
+      message: 'Iniciando sesión...',
+      // duration: 3000,
+    });
+
+    loading.present();
   }
 
 }

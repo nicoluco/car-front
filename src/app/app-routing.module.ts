@@ -30,13 +30,18 @@ const routes: Routes = [
   {
     path: 'registro-mantencion',
     loadChildren: () => import('./pages/registro-mantencion/registro-mantencion.module').then( m => m.RegistroMantencionPageModule)
-  },  {
+  },
+  {
     path: 'registro-citas',
     loadChildren: () => import('./pages/registro-citas/registro-citas.module').then( m => m.RegistroCitasPageModule)
   },
   {
     path: 'historial',
     loadChildren: () => import('./pages/historial/historial.module').then( m => m.HistorialPageModule)
+  },
+  {
+    path: '**',
+    loadChildren: () => import('./pages/inicio-sesion/inicio-sesion.module').then(m => m.InicioSesionPageModule)
   },
 
 
