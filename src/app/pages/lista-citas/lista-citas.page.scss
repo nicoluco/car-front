@@ -1,1 +1,9 @@
 .buton {display: flex; justify-content: space-between; align-items: center;} 
+
+.alinear{
+    display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  flex-direction: column;  /* Asegura que los elementos se alineen en columna */
+  padding: 20px;
+
+}

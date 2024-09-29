@@ -42,7 +42,7 @@
     </div>
     <ion-label>
       <ion-label>
-        <strong>Vehiculo</strong>
+        <strong>Vehículo</strong>
         <br />
         <ion-note color="medium" class="ion-text-wrap">
           {{vehiculoData}} {{vehiculoPatente}}
@@ -54,6 +54,13 @@
           <ion-icon name="add"></ion-icon>
         </ion-fab-button>
       </ion-fab>
+      <!-- Botón "trash" o posible editar -->
+      <ion-fab vertical="center" horizontal="end" slot="end" class="plusButon" *ngIf="!noTieneAuto">
+        <ion-fab-button color="danger" size="small" >
+          <ion-icon name="trash-outline" ></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+
     </ion-label>
   </ion-item>
 
@@ -94,7 +101,7 @@
 <!-- comentario -->
     <!-- inicio de la seccion historial -->
      <div>
-      <ion-card-title class="titulo" >Historial del vehiculo</ion-card-title>
+      <ion-card-title class="titulo" >Historial del vehículo</ion-card-title>
     </div>
 
 <!--     <ion-list [inset]="true">

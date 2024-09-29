@@ -106,7 +106,7 @@ onClickPostData() {
     return '';
   }
 
-
+  // loading
   async showLoading() {
     const loading = await this.loadingCtrl.create({
       spinner:"circular",

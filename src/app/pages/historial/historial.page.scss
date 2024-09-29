@@ -1,3 +1,11 @@
 .mg-top{
     margin-top: 5px;
 }
+
+.centrar{
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  flex-direction: column;  /* Asegura que los elementos se alineen en columna */
+  padding: 20px;    
+  align-items: center;
+}
