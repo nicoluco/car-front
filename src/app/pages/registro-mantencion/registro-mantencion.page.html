@@ -16,7 +16,7 @@
       <ion-card-header class="text-align-center">
         <ion-card-title > <h1>Registrar mantención</h1></ion-card-title>
       </ion-card-header>
-      <form (ngSubmit)="onSubmit()">
+      <form (ngSubmit)="onSubmit()" >
         <!-- lista de mantenciones-->
  <!--        <ion-item>
           <ion-label>Tipo de Mantención (*)</ion-label>
@@ -40,17 +40,25 @@
 
 <!--   selector de vehiculo desde bd -->
 
+        <ion-item>
+          <ion-label>Seleccione vehiculo (*)</ion-label>
+          <ion-select>
+            <ion-select-option *ngFor="let vehiculo of datos_vehiculos" [value]="vehiculo.id">
+              {{ vehiculo.patente }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
 
-<!--         <ion-item>
+
+        <ion-item>
           <ion-label>Tipo de Mantención (*)</ion-label>
-          <ion-select formControlName="mantenimiento">
+          <ion-select>
             <ion-select-option *ngFor="let item of datos_mantenimientos" [value]="item.id">
               {{ item.nombre }}
             </ion-select-option>
           </ion-select>
         </ion-item>
- -->
- -->
+
 
     
         

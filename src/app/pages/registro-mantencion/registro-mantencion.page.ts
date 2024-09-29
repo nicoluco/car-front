@@ -12,12 +12,17 @@ export class RegistroMantencionPage implements OnInit {
   comentarios!:string;
   evidencia!:File;
 
-  datos_mantenimientos: any[] = [];
+  vehiculoPatente: String;
+
+  datos_mantenimientos: any[] = [{nombre:""}];
   dato_mantenimiento: String;
+
+  datos_vehiculos: any[] = [{nombre:""}];
 
 
   constructor(private apiService: APIService) {
     this.dato_mantenimiento= "";
+    this.vehiculoPatente="Sin datos";
    }
 
   ngOnInit() {
@@ -28,6 +33,16 @@ export class RegistroMantencionPage implements OnInit {
     }, error => {
       console.error('Error al hacer la petición:', error);
     });
+
+    this.apiService.getData('Vehiculos/', true)
+      .subscribe(response => {
+        if (response) {
+          this.datos_vehiculos = response
+          console.log(response)
+        }
+      }, error => {
+        console.error('Error en el GET:', error);
+      });
 
   }
   
