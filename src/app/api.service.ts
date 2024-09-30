@@ -50,7 +50,8 @@ export class APIService {private apiUrl = 'http://localhost:8000/'; // URL de la
     if (usaAuth ){
 
       headers = new HttpHeaders({
-        'Content-Type': 'application/json',
+/*         'Content-Type': (data instanceof FormData)?"multipart/form-data": 'application/json', */
+        
         'Authorization': 'Bearer '+this.getToken()
       });
     }

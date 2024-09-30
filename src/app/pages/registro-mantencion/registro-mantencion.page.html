@@ -42,7 +42,7 @@
 
         <ion-item>
           <ion-label>Seleccione vehiculo (*)</ion-label>
-          <ion-select>
+          <ion-select [(ngModel)]="seleccionVehiculo" name="vehiculo">
             <ion-select-option *ngFor="let vehiculo of datos_vehiculos" [value]="vehiculo.id">
               {{ vehiculo.patente }}
             </ion-select-option>
@@ -52,7 +52,7 @@
 
         <ion-item>
           <ion-label>Tipo de Mantención (*)</ion-label>
-          <ion-select>
+          <ion-select [(ngModel)]="tipoMantencion" name="mantenimiento">
             <ion-select-option *ngFor="let item of datos_mantenimientos" [value]="item.id">
               {{ item.nombre }}
             </ion-select-option>
@@ -81,11 +81,18 @@
         <ion-item>
           <ion-textarea [(ngModel)]="comentarios" name="comentarios" label="Comentarios adicionales" labelPlacement="floating" rows="5"></ion-textarea>
         </ion-item>
+
+        <ion-item>
+          <ion-label>kilometraje (*)</ion-label>
+          <ion-input [(ngModel)]="datoKilometraje" type="number" name="nameKilometraje"> </ion-input>
+
+
+        </ion-item>
     
         
         <ion-item>
           <ion-label>Agregar evidencia</ion-label>
-          <input type="file" (change)="onFileSelected($event)" accept="image/*">
+          <input type="file" (change)="onFileSelected($event)" accept="image/*" name="nameEvidencia">
         </ion-item>
     
         

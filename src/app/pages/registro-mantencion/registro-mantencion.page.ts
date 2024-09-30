@@ -8,16 +8,18 @@ import { APIService } from '../../api.service';
 })
 export class RegistroMantencionPage implements OnInit {
   tipoMantencion!:string;
+  seleccionVehiculo!:string;
   fechaMantencion!:string;
   comentarios!:string;
   evidencia!:File;
+  datoKilometraje!:string;
 
   vehiculoPatente: String;
 
-  datos_mantenimientos: any[] = [{nombre:""}];
+  datos_mantenimientos: any[] = [];
   dato_mantenimiento: String;
 
-  datos_vehiculos: any[] = [{nombre:""}];
+  datos_vehiculos: any[] = [];
 
 
   constructor(private apiService: APIService) {
@@ -56,9 +58,36 @@ export class RegistroMantencionPage implements OnInit {
   }
 
   onSubmit() {
-    if (this.tipoMantencion && this.fechaMantencion && this.evidencia) {
+    const fechaActual = new Date().toISOString().slice(0, 19).replace('T', ' '); // Obtiene la fecha actual en formato YYYY-MM-DD HH:mm:ss
+    if (this.tipoMantencion && this.fechaMantencion && this.evidencia && this.seleccionVehiculo ) {
       const formData: FormData= new FormData();
-      formData.append ('evidencia', this.evidencia, this.evidencia.name)
+
+      
+
+      formData.append ('evidencia', this.evidencia)
+      formData.append ('vehiculo', this.seleccionVehiculo)
+      formData.append ('mantenimiento', this.tipoMantencion)
+      formData.append ('fecha_mantenimiento', this.fechaMantencion.replace(/( |T).*$/,""))
+      formData.append ('kilometraje', this.datoKilometraje)
+      formData.append ('notas', this.comentarios)
+      formData.append ('fecha_registro', fechaActual.replace(/( |T).*$/,""))
+
+    /*   formato de fecha correcto, eliminacion de caracter inecesario */
+      console.log(this.fechaMantencion.replace(/( |T).*$/,""))
+     
+
+
+
+      this.apiService.postData("HistorialMantenimientos/", formData, true).subscribe(response => {
+        console.log('Datos recibidos:', response);
+        window.location.replace('/historial');
+      }, error => {
+        console.error('Error al hacer la petición:', error);
+        
+      });
+
+
+
     } else {
       console.log('Es necesario completar los campos con *')
     }
