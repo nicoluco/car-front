@@ -9,3 +9,37 @@
   padding: 20px;    
   align-items: center;
 }
+.margen{
+  display: flex;
+  margin: 5px;
+}
+
+img{
+  margin-right: 50px;
+  padding-right: 10px;
+  width: 150%; /* Ajusta el porcentaje para cambiar el tamaño en relación con el original */
+  height: auto;
+}
+
+.alinear{
+    display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  flex-direction: column;  /* Asegura que los elementos se alineen en columna */
+  padding: 20px;
+
+}
+
+.cursiva {
+    font-style: italic;
+    font-size: 0.9em;  /* Ajusta el tamaño del texto (puedes cambiar el valor) */
+    color: #888888;   
+}
+
+.divimg{
+  width: 130px; /* acá se ajusta tamaño grande de la foto*/
+  height: auto;
+}
+
+.interactiva {
+  cursor: pointer; /* Cambia el cursor a una mano */
+}

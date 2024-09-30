@@ -43,8 +43,8 @@
    
   </ion-list> -->
   
-  
-  <ion-list [inset]="true">
+  <!-- desde aca -->
+  <!-- <ion-list [inset]="true">
     <ion-item *ngFor="let entrada of entradas_mantenimientos">
       <div class="mg-top">
       <strong>{{ entrada.mantenimiento.nombre}}</strong>
@@ -74,4 +74,80 @@
 
 
 
-</ion-content>
+</ion-content> -->
+
+<!-- <ion-card>
+  <ion-card-header>
+    <ion-card-title>Historial de mantenciones</ion-card-title>
+    <ion-card-subtitle>Evidencias</ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content>
+
+    <ion-list>
+
+      <ion-item *ngFor="let entrada of entradas_mantenimientos">
+        <ion-thumbnail slot="start">
+          <img alt="Silhouette of mountains" src="{{entrada.evidencia}}" />
+        </ion-thumbnail>
+        <ion-label>{{ entrada.mantenimiento.nombre}}</ion-label>
+        <ion-label>{{ entrada.mantenimiento.descripcion}}</ion-label>
+        <div>
+        <ion-label>{{entrada.fecha_mantenimiento}}</ion-label>
+        </div>
+      </ion-item>
+      
+    </ion-list>
+  </ion-card-content>
+</ion-card> -->
+
+
+<ion-grid><ion-row class="ion-justify-content-center"><ion-col  size-md="6">
+    <ion-list [inset]="true">
+
+    <div class="alinear">
+    <ion-card-title> <strong>Historial de Mantenciones</strong> </ion-card-title>
+    <ion-card-subtitle>Evidencias registradas: </ion-card-subtitle>
+    </div>
+
+        <ion-item *ngFor="let entrada of entradas_mantenimientos">
+          <ion-label>
+            <ion-label class="margen">
+              <div >
+                <ion-thumbnail slot="start" class="divimg">
+                  <img alt="Silhouette of mountains" src="{{entrada.evidencia}}" (click)="abrirImagen(entrada.evidencia)" class="interactiva" />
+                </ion-thumbnail>
+              </div>
+              <div>
+                  <strong>{{ entrada.mantenimiento.nombre}}</strong>
+                  
+                  <div>
+                    <ion-label class="cursiva">{{entrada.fecha_mantenimiento}}</ion-label>
+                  </div>
+                  <ion-note color="medium" class="ion-text-wrap">
+                    {{ entrada.mantenimiento.descripcion}}
+                  </ion-note>
+              </div>
+
+            </ion-label>    
+          </ion-label>
+        </ion-item>
+      
+
+    </ion-list>
+  </ion-col></ion-row></ion-grid>
+
+  <!-- Mensaje para historial vacio -->
+
+  <!-- <ion-card *ngIf="entradas_mantenimientos.length==0" class="centrar">
+    <ion-card-header>
+      <ion-card-title>Sin registros todavía.</ion-card-title>
+      <ion-card-subtitle>¡hora de agregar tu primer registro!</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+    <ion-button [routerLink]="'/registro-mantencion'" color="primary">Agregar mantenimiento</ion-button>
+    </ion-card-content>
+  </ion-card> -->
+
+  </ion-content>

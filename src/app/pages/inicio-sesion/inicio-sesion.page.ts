@@ -65,6 +65,7 @@ onClickPostData() {
     }, error => {
       console.error('Error en el POST:', error);
       this.presentToast("Error, correo o contraseña invalida");//Mensaje para el usuario
+      this.loadingCtrl.dismiss();
     });
 
     //El formulario al enviarse queda en blanco

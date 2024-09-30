@@ -40,9 +40,15 @@ const routes: Routes = [
     loadChildren: () => import('./pages/historial/historial.module').then( m => m.HistorialPageModule)
   },
   {
+    path: 'modal-imagen',
+    loadChildren: () => import('./pages/modal-imagen/modal-imagen.module').then(m => m.ModalImagenPageModule)
+  },
+  {
     path: '**',
     loadChildren: () => import('./pages/inicio-sesion/inicio-sesion.module').then(m => m.InicioSesionPageModule)
   },
+
+
 
 
  
