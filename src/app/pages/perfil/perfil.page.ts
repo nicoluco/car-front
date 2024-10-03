@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { APIService } from '../../api.service';
 import { MenuController } from '@ionic/angular';
+import { AngularFireMessaging } from '@angular/fire/compat/messaging';
 
 @Component({
   selector: 'app-perfil',
@@ -22,17 +23,20 @@ export class PerfilPage implements OnInit {
 
 
 
-  constructor(private router: Router, private apiService: APIService, private menuCtrl: MenuController) {
+  constructor(private afMessaging: AngularFireMessaging ,private router: Router, private apiService: APIService, private menuCtrl: MenuController) {
     this.usernameData="";
     this.vehiculoData="Sin vehiculo";
     this.vehiculoPatente="Sin datos";
     this.vehiculoKm= "Sin datos";
-    this.usernameDataCorreo="Rgistre un mail";
+    this.usernameDataCorreo="Registre un mail";
     this.noTieneAuto= true;
 
 
     this.entrada_mantenimiento= "";
-
+    // Llama a la función que obtiene el token de FCM y lo envía al servidor
+    if (this.apiService.isAuthenticated()) {
+      this.requestFCMPermission();
+    }
    }
 
 // mostrar elementos a la hora de inicializar la pagina
@@ -81,5 +85,48 @@ export class PerfilPage implements OnInit {
 
   navigateToRegistroVehiculo() {
     this.router.navigate(['/registro-vehiculo'])
+  }
+  // Función para obtener el token y enviarlo al servidor
+  requestFCMPermission() {
+    this.afMessaging.requestPermission
+      .pipe()  // Puedes añadir más operadores de RxJS si lo necesitas
+      .subscribe(
+        () => {
+          console.log('Permiso concedido para notificaciones');
+          this.afMessaging.getToken.subscribe(
+            (token) => {
+              if (token) {  // Si el token FCM es válido
+                console.log('Token de FCM obtenido:', token);
+                this.apiService.sendFCMToken(token).subscribe(
+                  response => {
+                    console.log('Token FCM enviado correctamente:', response);
+                  },
+                  error => {
+                    console.error('Error al enviar el token FCM:', error);
+                  }
+                );
+              }
+            },
+            (error) => {
+              console.error('Error al obtener el token de FCM:', error);
+            }
+          );  
+        },
+        (error) => {
+          console.error('Permiso denegado para notificaciones', error);
+        }
+      );
+  }
+
+  // Método para enviar el token al backend
+  handleFCMToken(token: string) {
+    this.apiService.sendFCMToken(token).subscribe(
+      response => {
+        console.log('Token FCM enviado correctamente:', response);
+      },
+      error => {
+        console.error('Error al enviar el token FCM:', error);
+      }
+    );
   }
 }
